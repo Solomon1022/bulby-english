@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH MANGA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH MANGA</title>
+    <style>
+      
+        /* ========== 全局重置（已有） ========== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* ========== 修改后的全局样式 ========== */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #222;
+    min-height: 100vh;
+    background-image: url('images/main-background.png');
+    background-repeat: repeat;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1100px; /* 👈 从800px加宽到1100px，大屏幕更舒展 */
+    margin: 0 auto;
+    padding: 40px 20px; /* 上下内边距从30px增加到40px */
+}
+
+header {
+    text-align: center;
+    padding: 50px 0; /* 上下内边距从40px增加到50px */
+    margin-bottom: 40px; /* 底部间距从30px增加到40px */
+}
+
+h1 {
+    font-size: 3rem; /* 标题稍微放大一点 */
+    margin-bottom: 15px;
+    font-weight: 900;
+    text-shadow: 3px 3px 0 #fff; /* 改成漫画风格硬阴影 */
+}
+
+section {
+    background-color: #fff; /* 改成纯白色背景，更符合漫画风格 */
+    padding: 40px 35px; /* 👈 上下内边距从25px增加到40px，左右35px */
+    margin-bottom: 35px; /* 功能区之间的间距从20px增加到35px */
+    border: 3px solid #000; /* 改成粗黑漫画边框 */
+    box-shadow: 8px 8px 0 #000; /* 漫画风格硬阴影 */
+}
+
+h2 {
+    color: #000;
+    margin-bottom: 25px; /* 标题底部间距从15px增加到25px */
+    border-bottom: 3px solid #ff0000; /* 改成红色下划线，和整体配色统一 */
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+/* 给h2加上左边的红色竖条，和首页风格统一 */
+h2::before {
+    content: '';
+    width: 8px;
+    height: 30px;
+    background-color: #ff0000;
+    margin-right: 12px;
+    display: inline-block;
+}
+
+button {
+    background-color: #ff0000; /* 改成红色按钮，和整体配色统一 */
+    color: white;
+    border: 3px solid #000; /* 粗黑边框 */
+    padding: 15px 40px; /* 按钮上下加高，左右加宽 */
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 40px auto; /* 按钮上下间距从30px增加到40px */
+    transition: all 0.2s;
+    box-shadow: 5px 5px 0 #000; /* 漫画风格硬阴影 */
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 7px 7px 0 #000;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #fff;
+}
+
+
+
+
+   
+        /* ========== 1. 全局重置与基础样式 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-image: url("images/main-background.png");
+            background-repeat: repeat;
+            line-height: 1.6;
+        }
+
+        /* ========== 2. 顶部导航栏 ========== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 2px solid #000;
+            background-color: #fff;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #000;
+            font-size: 1rem;
+        }
+
+        /* ========== 3. 大标题区域（黑白漫画风格） ========== */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            margin-bottom: 20px;
+            /* 禁止文本选择与点击 */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .hero h1,
+        .hero .subtitle {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* 漫画风格主背景框 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 75%;
+            background-color: #fff;
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0 #000, inset 0 0 20px rgba(0,0,0,0.05);
+            z-index: 0;
+        }
+
+        /* 四个角落装饰点 */
+        .hero .corner-1,
+        .hero .corner-2,
+        .hero .corner-3 {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0000;
+            z-index: 1;
+        }
+        .hero .corner-1 { top: 15%; right: 17%; background-color: #000; }
+        .hero .corner-2 { bottom: 15%; left: 17%; background-color: #000; }
+        .hero .corner-3 { bottom: 15%; right: 17%; background-color: #ff0000; }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 17%;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0000;
+            z-index: 1;
+        }
+
+        /* 四条装饰线 */
+        .hero .deco-line {
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: #000;
+            z-index: 1;
+        }
+        .hero .deco-line-1 { top: 25%; left: 20%; }
+        .hero .deco-line-2 { top: 25%; right: 20%; }
+        .hero .deco-line-3 { bottom: 25%; left: 20%; }
+        .hero .deco-line-4 { bottom: 25%; right: 20%; }
+
+        /* 标题文字 */
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        .hero .red-text {
+            color: #ff0000;
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        .hero .subtitle {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #000;
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+            border-top: 2px dashed #000;
+            border-bottom: 2px dashed #000;
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        /* ========== 4. 通用区域样式 ========== */
+        .section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 55px 45px;
+    border: 3px solid #000;            /* 粗黑边框 */
+          
+    border-radius: 18px !important;               /* 👈 加上这句，角就变钝了 */
+}
+       /* 漫画风格硬阴影 */
+.section {
+    position: relative;          /* 让伪元素相对于它定位 */
+    border-radius: 18px;
+    /* 移除原来的 box-shadow */
+    box-shadow: none;
+}
+.section::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 18px;        /* 和父元素一样的圆角 */
+    z-index: -1;               /* 放到框的后面 */
+}
+
+
+
+
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .red-bar {
+            width: 8px;
+            height: 30px;
+            background-color: #ff0000;
+            margin-right: 10px;
+        }
+
+        /* ========== 5. 选择学习搭子区域 ========== */
+        .partner-cards {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+            align-items: stretch;
+        }
+
+        .partner-card {
+            flex: 1;
+            display: flex;
+            height: 380px;
+            background-color: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .partner-card.active {
+            border-color: #ff0000;
+            background-color: #fff5f5;
+        }
+
+        .partner-img-container {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background-color: #fff;
+            aspect-ratio: 2/3;
+        }
+
+        .partner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .partner-info {
+            flex: 3;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid #ddd;
+        }
+
+        .partner-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .partner-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .partner-note {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        /* ========== 6. 选择考试模式区域 ========== */
+        .exam-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #000;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .exam-cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exam-card {
+            border: 2px solid #000;
+            padding: 20px 15px;
+            text-align: center;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .exam-card:hover {
+            background-color: #f5f5f5;
+        }
+
+        .exam-card.active {
+            border-color: #ff0000;
+            background-color: #fff5f5;
+        }
+
+        .exam-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .exam-card p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* ========== 7. 选择学习方法区域 ========== */
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .method-card {
+            border: 2px solid #000;
+            padding: 30px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .method-card:hover {
+            background-color: #f5f5f5;
+        }
+
+        .method-card.active {
+            border-color: #ff0000;
+            background-color: #fff5f5;
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .method-card.active .method-icon {
+            background-color: #ff0000;
+        }
+
+        .method-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .method-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .method-tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            border: 1px solid #000;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            background-color: #fff;
+        }
+
+        /* ========== 8. 当前选择与开始按钮 ========== */
+        .current-selection {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .current-selection span {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .start-btn {
+            display: block;
+            width: 200px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #ff0000;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 2px solid #000;
+            cursor: pointer;
+            margin: 0 auto 40px;
+            transition: all 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* ========== 9. 底部图标 ========== */
+        .bottom-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 0;
+        }
+
+        .icon {
+            width: 130px;
+            height: 52px;
+            border: 2px solid #000;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.15rem;
+            transform: skewX(-8deg);
+        }
+
+        .icon:last-child {
+            width: 190px;
+        }
+
+        /* ========== 10. 确认弹窗 ========== */
+        .confirm-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 3px solid #000;
+            padding: 40px 60px;
+            text-align: center;
+            z-index: 10000;
+            pointer-events: auto;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid #000;
+            cursor: pointer;
+            transition: all 0.2s;
+            pointer-events: auto;
+        }
+
+        .cancel-btn {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .confirm-btn {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ========== 11. 小精灵 Bulby 组件 ========== */
+        .bulby-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99999;
+            cursor: grab;
+            user-select: none;
+            pointer-events: auto;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
+        .bulby-img {
+            width: 300px;
+            height: auto;
+            display: block;
+            transform-origin: center bottom;
+            transition: transform 0.3s ease;
+            animation: idleBreath 4s ease-in-out infinite;
+        }
+
+        @keyframes idleBreath {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes clickShake {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            25% { transform: rotate(-10deg) translateY(0); }
+            75% { transform: rotate(10deg) translateY(0); }
+        }
+
+        .bulby-img.click-shake {
+            animation: clickShake 0.5s ease-in-out !important;
+        }
+
+        .bulby-img.auto-pulse {
+            transform: scale(1.15) !important;
+        }
+
+        .bulby-bubble {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 12px;
+            padding: 10px 15px;
+            max-width: 220px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 0 #000;
+            pointer-events: none;
+        }
+
+        .bulby-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 40px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #000;
+        }
+
+        .bulby-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 41px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid #fff;
+            z-index: 1;
+        }
+
+        .bulby-bubble.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-8px);
+        }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- ==================== 1. 顶部导航栏 ==================== -->
+    <nav class="navbar">
+        <div class="logo">📖 ENGLISH MANGA</div>
+        <div class="nav-links">
+            <a href="#select-pattern">选择模式</a>
+            <a href="#select-method">学习方法</a>
+        </div>
+    </nav>
+
+    <!-- ==================== 2. 大标题区域（漫画风格） ==================== -->
+    <div class="hero">
+        <div class="corner-1"></div>
+        <div class="corner-2"></div>
+        <div class="corner-3"></div>
+        <div class="deco-line deco-line-1"></div>
+        <div class="deco-line deco-line-2"></div>
+        <div class="deco-line deco-line-3"></div>
+        <div class="deco-line deco-line-4"></div>
+        <h1>ENGLISH<br>MANGA<br><span class="red-text">LEARN</span></h1>
+        <p class="subtitle">用漫画的方式征服英语</p>
+    </div>
+
+    <!-- ==================== 3. 选择学习搭子区域 ==================== -->
+    <section class="section" id="select-dazi">
+        <h2 class="section-title">
+            <span class="red-bar"></span>
+            选择你的学习搭子
+        </h2>
+        <div class="partner-cards">
+            <div class="partner-card active" data-type="partner" data-value="Not-wearinglasses">
+                <div class="partner-img-container">
+                    <img src="images/friends/P1.png" alt="Not-wearinglasses" class="partner-img">
+                </div>
+                <div class="partner-info">
+                    <h3 class="partner-name">Not-wearinglasses</h3>
+                    <p class="partner-desc">一起征服英语，一起进步！<br>陪你刷单词、练听力，陪你攻克每一个语法难点。</p>
+                    <p class="partner-note">形象的选择只在后面会稍微发生变化，不影响使用</p>
+                </div>
+            </div>
+            <div class="partner-card" data-type="partner" data-value="Wearinglasses">
+                <div class="partner-img-container">
+                    <img src="images/friends/P1-wearinglasses.png" alt="Wearinglasses" class="partner-img">
+                </div>
+                <div class="partner-info">
+                    <h3 class="partner-name">Wearinglasses</h3>
+                    <p class="partner-desc">陪你点亮每一个知识点 💡<br>遇到难题别慌，我来帮你梳理思路，一起找到答案！</p>
+                    <p class="partner-note">形象的选择只在后面会稍微发生变化，不影响使用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 4. 选择考试模式区域 ==================== -->
+    <section class="section" id="select-pattern">
+        <h2 class="section-title">
+            <span class="red-bar"></span>
+            选择考试模式
+        </h2>
+        <select class="exam-select" id="examSelect">
+            <option value="小学英语" selected>小学英语</option>
+            <option value="中学英语">中学英语</option>
+            <option value="四六级">四六级</option>
+            <option value="考研英语">考研英语</option>
+            <option value="专四/八级">专四/八级</option>
+            <option value="雅思">雅思</option>
+            <option value="托福">托福</option>
+            <option value="BEC">BEC</option>
+            <option value="GRE">GRE</option>
+            <option value="GMAT">GMAT</option>
+        </select>
+        <div class="exam-cards">
+            <div class="exam-card active" data-type="exam" data-value="小学英语">
+                <h4>小学英语</h4><p>基础词汇入门</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="中学英语">
+                <h4>中学英语</h4><p>中考高考必备</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="四六级">
+                <h4>四六级</h4><p>CET-4 / CET-6</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="考研英语">
+                <h4>考研英语</h4><p>研究生入学</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="专四/八级">
+                <h4>专四/八级</h4><p>TEM-4 / TEM-8</p>
+            </div>
+        </div>
+        <div class="exam-cards">
+            <div class="exam-card" data-type="exam" data-value="雅思">
+                <h4>雅思</h4><p>IELTS</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="托福">
+                <h4>托福</h4><p>TOEFL</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="BEC">
+                <h4>BEC</h4><p>商务英语</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="GRE">
+                <h4>GRE</h4><p>研究生入学</p>
+            </div>
+            <div class="exam-card" data-type="exam" data-value="GMAT">
+                <h4>GMAT</h4><p>商科管理</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. 选择学习方法区域 ==================== -->
+    <section class="section" id="select-method">
+        <h2 class="section-title">
+            <span class="red-bar"></span>
+            选择学习方法
+        </h2>
+        <div class="method-cards">
+            <div class="method-card active" data-type="method" data-value="深度学习">
+                <div class="method-icon">📖</div>
+                <div class="method-info">
+                    <h3>深度学习</h3>
+                    <p>系统化词汇记忆，科学间隔重复。专注攻克每一个单词，逐个击破考试核心词汇表。</p>
+                    <div class="method-tags">
+                        <span class="tag">间隔重复</span>
+                        <span class="tag">词汇表</span>
+                        <span class="tag">专注</span>
+                    </div>
+                </div>
+            </div>
+            <div class="method-card" data-type="method" data-value="学习兼娱乐沉浸式">
+                <div class="method-icon">🎮</div>
+                <div class="method-info">
+                    <h3>学习兼娱乐沉浸式</h3>
+                    <p>漫画剧情中自然习得词汇，边读边学。在精彩故事中不知不觉记住单词，享受学习的乐趣。</p>
+                    <div class="method-tags">
+                        <span class="tag">漫画剧情</span>
+                        <span class="tag">沉浸式</span>
+                        <span class="tag">趣味</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="current-selection">
+            当前选择：<span id="currentText">小学英语 - 深度学习</span>
+        </div>
+
+        <div class="start-btn" id="startBtn">START →</div>
+    </section>
+
+    <!-- ==================== 6. 底部图标 ==================== -->
+    <div class="bottom-icons">
+        <div class="icon">BOOK</div>
+        <div class="icon">PENCIL</div>
+        <div class="icon">GLOBE</div>
+        <div class="icon">TARGET</div>
+        <div class="icon">HEADPHONES</div>
+    </div>
+
+    <!-- ==================== 7. 确认弹窗 ==================== -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="modal-content">
+            <h3>确认进入学习</h3>
+            <p>你已完成所有选择，是否确定进入学习界面？</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" id="cancelBtn">取消重选</button>
+                <button class="modal-btn confirm-btn" id="confirmBtn">确定进入</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 8. 小精灵 Bulby ==================== -->
+    <div class="bulby-container" id="bulby">
+        <div class="bulby-bubble" id="bulbyBubble">你好呀！今天也要加油学英语哦~</div>
+        <img class="bulby-img" src="images/Bulby.png" alt="小精灵Bulby">
+    </div>
+
+    <!-- ==================== 全部脚本逻辑 ==================== -->
+    <script>
+        // ---------- 全局选中的数据 ----------
+        const selectedData = {
+    partners: [
+        { name: "Not-wearinglasses", avatar: "images/friends/P1.png" },
+        { name: "Wearinglasses", avatar: "images/friends/P1-wearinglasses.png" }
+    ],
+    currentPartnerIndex: 0,  // 默认选中第一个，0=不戴眼镜，1=戴眼镜
+    exam: "小学英语",
+    method: "深度学习"
+};
+
+        // ---------- 通用选中切换 ----------
+        function handleSelection(elements, type, value, extraData = null) {
+            elements.forEach(el => el.classList.remove('active'));
+            if (this.classList) this.classList.add('active');
+            selectedData[type] = extraData || value;
+            updateCurrentSelection();
+        }
+
+        // ---------- 更新当前选择提示 ----------
+        function updateCurrentSelection() {
+            document.getElementById('currentText').innerText =
+                `${selectedData.exam} - ${selectedData.method}`;
+        }
+
+        // ---------- 搭子卡片选择 ----------
+        const partnerCards = document.querySelectorAll('.partner-card');
+        partnerCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const name = this.dataset.value;
+                const avatar = this.querySelector('.partner-img').src;
+                handleSelection.call(this, partnerCards, 'partner', name, { name, avatar });
+            });
+        });
+
+        // ---------- 考试模式联动 ----------
+        const examSelect = document.getElementById('examSelect');
+        const examCards = document.querySelectorAll('.exam-card');
+
+        examSelect.addEventListener('change', function() {
+            examCards.forEach(card => {
+                if (card.dataset.value === this.value) {
+                    handleSelection.call(card, examCards, 'exam', this.value);
+                }
+            });
+        });
+
+        examCards.forEach(card => {
+            card.addEventListener('click', function() {
+                examSelect.value = this.dataset.value;
+                handleSelection.call(this, examCards, 'exam', this.dataset.value);
+            });
+        });
+
+        // ---------- 学习方法选择 ----------
+        const methodCards = document.querySelectorAll('.method-card');
+        methodCards.forEach(card => {
+            card.addEventListener('click', function() {
+                handleSelection.call(this, methodCards, 'method', this.dataset.value);
+            });
+        });
+
+        // ---------- 弹窗与跳转 ----------
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('startBtn').addEventListener('click', function() {
+                document.getElementById('confirmModal').style.display = 'block';
+            });
+
+            document.getElementById('cancelBtn').addEventListener('click', function() {
+                document.getElementById('confirmModal').style.display = 'none';
+            });
+
+            document.getElementById('confirmBtn').addEventListener('click', function() {
+                localStorage.setItem('partnerName', selectedData.partner.name);
+                localStorage.setItem('examMode', selectedData.exam);
+                localStorage.setItem('studyMethod', selectedData.method);
+                window.location.href = "learn.html";
+            });
+
+            document.getElementById('confirmModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        // ---------- 小精灵 Bulby 交互 ----------
+        (function() {
+            const bulby = document.getElementById('bulby');
+            const img = bulby.querySelector('.bulby-img');
+            const bubble = document.getElementById('bulbyBubble');
+
+            const phrases = [
+                "你好呀！今天也要加油学英语哦~",
+                "加油！你一定可以的！",
+                "有什么问题都可以问我哦~",
+                "休息一下吧，别太累了~",
+                "太棒了！你又学会了一个单词！",
+                "坚持就是胜利！",
+                "我会一直陪着你学习的~"
+            ];
+
+            // 拖拽功能
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            bulby.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = bulby.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                bulby.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                bulby.style.left = (initialX + deltaX) + 'px';
+                bulby.style.top = (initialY + deltaY) + 'px';
+                bulby.style.bottom = 'auto';
+                bulby.style.right = 'auto';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    bulby.style.cursor = 'grab';
+                }
+            });
+
+            // 点击摇晃 + 随机对话
+            img.addEventListener('click', function(e) {
+                if (isDragging) return;
+                e.stopPropagation();
+                img.classList.remove('click-shake');
+                void img.offsetWidth;
+                img.classList.add('click-shake');
+
+                const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+                bubble.textContent = randomPhrase;
+                bubble.classList.remove('show');
+                void bubble.offsetWidth;
+                bubble.classList.add('show');
+                setTimeout(() => bubble.classList.remove('show'), 3000);
+            });
+
+            // 自动放大缩小循环（每30秒）
+            function startAutoPulse() {
+                setInterval(() => {
+                    img.classList.add('auto-pulse');
+                    bubble.textContent = "加油，宝子❤";
+                    bubble.classList.add('show');
+                    setTimeout(() => {
+                        img.classList.remove('auto-pulse');
+                        bubble.classList.remove('show');
+                    }, 2000);
+                }, 30000);
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    bubble.textContent = phrases[0];
+                    bubble.classList.add('show');
+                    setTimeout(() => bubble.classList.remove('show'), 3000);
+                }, 1000);
+                startAutoPulse();
+            });
+        })();
+    </script>
+</body>
+</html>
