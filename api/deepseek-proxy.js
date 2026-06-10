@@ -1,12 +1,12 @@
 // api/deepseek-proxy.js
-module.exports = async (req, res) => {
+const handler = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages } = req.body;
-
   try {
+    const { messages } = req.body;
+
     const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -27,3 +27,5 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export default handler;
