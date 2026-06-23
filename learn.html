@@ -611,6 +611,8 @@ function bindSendMessageEvent() {
     });
 }
 
+
+
 // 👇 替换为异步真实 API 调用
 async function sendMessage() {
     const input = document.querySelector('.chat-input');
@@ -622,7 +624,23 @@ async function sendMessage() {
     input.value = '';
 
     // 获取当前对话完整历史
-    const conv = conversations.find(c => c.id === currentConversationId);
+    let conv = conversations.find(c => c.id === currentConversationId);
+    
+    // 👇 如果找不到当前对话（比如被删了或数据损坏），自动创建一个新对话
+    if (!conv) {
+        console.warn('Current conversation not found, creating a new one');
+        const newConversation = {
+            id: Date.now().toString(),
+            title: '新对话',
+            createdAt: new Date().toISOString(),
+            messages: []
+        };
+        conversations.unshift(newConversation);
+        saveConversations();
+        currentConversationId = newConversation.id;
+        conv = newConversation;
+    }
+
     const chatHistory = conv.messages.map(m => ({
         role: m.role,
         content: m.content
@@ -644,9 +662,11 @@ async function sendMessage() {
         const aiContent = data.choices[0].message.content;
         addMessage({ role: 'ai', content: aiContent });
     } catch (error) {
+        console.error('API call failed:', error);  // 加这行方便调试
         addMessage({ role: 'ai', content: 'Sorry, something went wrong. Please try again.' });
     }
 }
+
 
 function addMessage(message) {
     const conv = conversations.find(c => c.id === currentConversationId);
