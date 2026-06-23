@@ -615,9 +615,13 @@ function bindSendMessageEvent() {
 
 // 👇 替换为异步真实 API 调用
 async function sendMessage() {
+    console.log('=== sendMessage START ===');
     const input = document.querySelector('.chat-input');
     const content = input.value.trim();
-    if (!content) return;
+    if (!content) {
+        console.log('Empty input, return');
+        return;
+    }
 
     // 添加用户消息
     addMessage({ role: 'user', content: content });
@@ -625,10 +629,11 @@ async function sendMessage() {
 
     // 获取当前对话完整历史
     let conv = conversations.find(c => c.id === currentConversationId);
-    
-    // 👇 如果找不到当前对话（比如被删了或数据损坏），自动创建一个新对话
+    console.log('currentConversationId:', currentConversationId);
+    console.log('conv found:', !!conv);
+
     if (!conv) {
-        console.warn('Current conversation not found, creating a new one');
+        console.warn('No conversation found, creating new one');
         const newConversation = {
             id: Date.now().toString(),
             title: '新对话',
@@ -639,32 +644,39 @@ async function sendMessage() {
         saveConversations();
         currentConversationId = newConversation.id;
         conv = newConversation;
+        console.log('New conversation created:', currentConversationId);
     }
 
     const chatHistory = conv.messages.map(m => ({
         role: m.role,
         content: m.content
     }));
+    console.log('chatHistory length:', chatHistory.length);
 
-    // 构建消息列表：系统提示词 + 历史
     const messages = [
         buildSystemPrompt(),
         ...chatHistory
     ];
+    console.log('Final messages count:', messages.length);
 
+    console.log('About to fetch /api/deepseek-proxy...');
     try {
         const response = await fetch('/api/deepseek-proxy', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages })
         });
+        console.log('Fetch response status:', response.status);
         const data = await response.json();
+        console.log('Response data:', data);
         const aiContent = data.choices[0].message.content;
         addMessage({ role: 'ai', content: aiContent });
+        console.log('AI reply added');
     } catch (error) {
-        console.error('API call failed:', error);  // 加这行方便调试
+        console.error('Fetch failed:', error);
         addMessage({ role: 'ai', content: 'Sorry, something went wrong. Please try again.' });
     }
+    console.log('=== sendMessage END ===');
 }
 
 
