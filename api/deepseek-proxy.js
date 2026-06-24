@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
         model: 'deepseek-chat',
         messages: messages,
         temperature: 0.7,
-        max_tokens: 2000
+        max_tokens: 8000
       })
     });
 
