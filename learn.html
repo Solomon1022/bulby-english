@@ -462,10 +462,10 @@ window.onload = function() {
 
     let avatarUrl;
     if (partnerName === 'Wearinglasses') {
-        avatarUrl = 'images/friends/P1-wearinglasses.png';
-    } else {
-        avatarUrl = 'images/friends/P1.png';
-    }
+    avatarUrl = 'images/friends/P1-wearinglasses.png';
+} else {
+    avatarUrl = 'images/friends/P1-Not-wearinglasses.png';
+}
 
     const avatar = document.getElementById('ai-avatar');
     if (avatar) {
@@ -514,10 +514,19 @@ let currentStudyMethod = '';
 // 3. 对话管理功能
 // ==============================================
 function loadConversations() {
-    const saved = localStorage.getItem('conversations');
+    const key = `conversations_${currentPartnerName}`;  // 按搭子名区分
+    const saved = localStorage.getItem(key);
     if (saved) {
         conversations = JSON.parse(saved);
+    } else {
+        conversations = [];  // 没记录就空
     }
+    renderConversationsList();
+}
+
+function saveConversations() {
+    const key = `conversations_${currentPartnerName}`;
+    localStorage.setItem(key, JSON.stringify(conversations));
     renderConversationsList();
 }
 

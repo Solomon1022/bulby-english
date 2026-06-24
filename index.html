@@ -735,7 +735,7 @@ footer {
         <div class="partner-cards">
             <div class="partner-card active" data-type="partner" data-value="Not-wearinglasses">
                 <div class="partner-img-container">
-                    <img src="images/friends/P1.png" alt="Not-wearinglasses" class="partner-img">
+                    <img src="images/friends/P1-Not-wearinglasses.png" alt="Not-wearinglasses" class="partner-img">
                 </div>
                 <div class="partner-info">
                     <h3 class="partner-name">Not-wearinglasses</h3>
@@ -907,12 +907,20 @@ footer {
         // ---------- 搭子卡片选择 ----------
         const partnerCards = document.querySelectorAll('.partner-card');
         partnerCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const name = this.dataset.value;
-                const avatar = this.querySelector('.partner-img').src;
-                handleSelection.call(this, partnerCards, 'partner', name, { name, avatar });
-            });
-        });
+    card.addEventListener('click', function() {
+        const name = this.dataset.value;
+        const avatar = this.querySelector('.partner-img').src;
+        // 更新当前选中的搭子索引
+        if (name === 'Wearinglasses') {
+            selectedData.currentPartnerIndex = 1;
+        } else {
+            selectedData.currentPartnerIndex = 0;
+        }
+        handleSelection.call(this, partnerCards, 'partner', name, { name, avatar });
+    });
+});
+
+
 
         // ---------- 考试模式联动 ----------
         const examSelect = document.getElementById('examSelect');
@@ -952,12 +960,13 @@ footer {
             });
 
             document.getElementById('confirmBtn').addEventListener('click', function() {
-                localStorage.setItem('partnerName', selectedData.partner.name);
-                localStorage.setItem('examMode', selectedData.exam);
-                localStorage.setItem('studyMethod', selectedData.method);
-                window.location.href = "learn.html";
-            });
-
+    const currentPartner = selectedData.partners[selectedData.currentPartnerIndex];
+    localStorage.setItem('partnerName', currentPartner.name);
+    localStorage.setItem('partnerAvatar', currentPartner.avatar);
+    localStorage.setItem('examMode', selectedData.exam);
+    localStorage.setItem('studyMethod', selectedData.method);
+    window.location.href = "learn.html";
+});
             document.getElementById('confirmModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.style.display = 'none';
