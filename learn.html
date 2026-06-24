@@ -543,7 +543,7 @@ function createNewConversationWithWelcome() {
         messages: []
     };
     newConversation.messages.push({
-        role: 'ai',
+        role: 'assistant',
         content: `你好！我是${currentPartnerName}，很高兴陪你一起学习${currentExamMode}英语，我们用${currentStudyMethod}的方式开始吧！`
     });
 
@@ -679,11 +679,11 @@ async function sendMessage() {
         const data = await response.json();
         console.log('Response data:', data);
         const aiContent = data.choices[0].message.content;
-        addMessage({ role: 'ai', content: aiContent });
+        addMessage({ role: 'assistant', content: aiContent });
         console.log('AI reply added');
     } catch (error) {
         console.error('Fetch failed:', error);
-        addMessage({ role: 'ai', content: 'Sorry, something went wrong. Please try again.' });
+        addMessage({ role: 'assistant', content: 'Sorry, something went wrong. Please try again.' });
     }
     console.log('=== sendMessage END ===');
 }
